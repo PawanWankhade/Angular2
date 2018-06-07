@@ -1,0 +1,46 @@
+
+<app-employee-count *ngIf="employees" [all]="getTotalEmployeesCount()"
+                    [female]="getTotalFemaleEmployeesCount()"
+                    [male]="getTotalMaleEmployeesCount()"
+                    (countRadioButtonSelectionChanged)="onEmployeeCountRadioButtonChange($event)">
+</app-employee-count>
+<br />
+
+<br />
+
+<!--<input type="text" [(ngModel)]="sampleInputFromParentComponent" />
+<app-simple [sampleInput] ="sampleInputFromParentComponent">Loading simple component</app-simple>-->
+<!--<p>{{sampleInputFromParentComponent}}</p>-->
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>DOB</th>
+            <th>Gender</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let emp of employees;">
+            <tr *ngIf="selectedEmployeeCountRadioButton == 'all' || selectedEmployeeCountRadioButton == emp.gender">
+                <td>{{emp.id}}</td>
+                <td><a [routerLink]="['/employee',emp.id]">{{emp.name|employeeTitle:emp.gender}}</a></td>
+                <td>{{emp.dateOfBirth}}</td>
+                <td>{{emp.gender}}</td>
+                <td>{{emp.salary|currency:'INR':true}}</td>
+            </tr>
+        </ng-container>
+
+
+        <tr *ngIf="!employees">
+            <td colspan="5">{{statusMessage}}</td>
+        </tr>
+        <tr *ngIf="employees && employees.length==0">
+            <td colspan="5">No employee record to display</td>
+        </tr>
+    </tbody>
+</table>
+<!--<button (click)="getEmployees()">Refresh Employee</button>-->

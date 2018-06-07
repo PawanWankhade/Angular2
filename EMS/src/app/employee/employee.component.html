@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-sm-5">
+        <p>Players photo will appear here</p>
+    </div>
+    <div class="col-sm-7">
+        <div *ngIf="employee">
+            <table class="table">
+                <tr>
+                    <td>ID</td>
+                    <td>{{employee.id}}</td>
+                </tr>
+
+                <tr>
+                    <td>Name</td>
+                    <td>{{employee.name}}</td>
+                </tr>
+
+                <tr>
+                    <td>Date of Birth</td>
+                    <td>{{employee.dateOfBirth}}</td>
+                </tr>
+
+                <tr>
+                    <td>Gender</td>
+                    <td>{{employee.gender}}</td>
+                </tr>
+
+
+                <tr>
+                    <td>Salary</td>
+                    <td>{{employee.salary}}</td>
+                </tr>
+
+                <tr *ngIf="!employee">
+                    <td colspan="2"><p>Employee not found</p></td>
+
+                </tr>
+
+            </table>
+        </div>
+        <div *ngIf="!employee">
+            <p>{{statusMessage}}</p>
+        </div>
+    </div>
+</div>
