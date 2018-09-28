@@ -1,4 +1,4 @@
-# Angular2
+# EMS Angular2 application
 # EMS
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
